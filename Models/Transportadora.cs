@@ -8,8 +8,9 @@ namespace trabalho_final.Models
 {
     public class Transportadora
     {
-        [Key]
+        [Display(Name = "Codigo"), Key()]
         public int Id { get; set; }
-        public string? Nome { get; set; }
+        [Display(Name = "Nome")]
+        public string Nome { get; set; } = string.Empty;
     }
 }

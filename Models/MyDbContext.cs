@@ -22,5 +22,6 @@ namespace trabalho_final.Models
         public DbSet<trabalho_final.Models.Transportadora> Transportadora { get; set; }
         public DbSet<trabalho_final.Models.Vendedor> Vendedor { get; set; }
         public DbSet<trabalho_final.Models.PagamentoComCartao> PagamentoComCartao { get; set; }
+        public DbSet<trabalho_final.Models.PagamentoComCheque> PagamentoComCheque { get; set; }
     }
 }

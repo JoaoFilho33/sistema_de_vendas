@@ -8,9 +8,11 @@ namespace trabalho_final.Models
 {
     public class TipoPagamento
     {
-        [Key]
+        [Display(Name = "Codigo"), Key()]
         public int Id { get; set; }
-        public string? NomeDoCobrado { get; set; }
-        public string? InformacoesAdicionais { get; set; }
+        [Display(Name = "Nome do Cobrado")]
+        public string NomeDoCobrado { get; set; } = string.Empty;
+        [Display(Name = "Informações Adicionais")]
+        public string InformacoesAdicionais { get; set; } = string.Empty;
     }
 }

@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;  // Adicionado para utilizar a anotação [Key]
+using System.ComponentModel.DataAnnotations;
 
 namespace trabalho_final.Models
 {
     public class Cliente
     {
-        [Key]
+        [Display(Name = "Codigo"), Key()]
         public int Id { get; set; }
-
+        [Display(Name = "Nome")]
         public string? Nome { get; set; }
     }
 }

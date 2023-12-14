@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using trabalho_final.Models;
 
@@ -10,9 +11,10 @@ using trabalho_final.Models;
 namespace pagamentoProduto.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231214153019_CorrecaoId")]
+    partial class CorrecaoId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,11 +72,9 @@ namespace pagamentoProduto.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -97,7 +97,7 @@ namespace pagamentoProduto.Migrations
                     b.Property<bool>("Tipo")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int?>("TipoDePagamentoId")
+                    b.Property<int?>("TipoPagamentoId")
                         .HasColumnType("int");
 
                     b.Property<int?>("TransportadoraId")
@@ -110,7 +110,7 @@ namespace pagamentoProduto.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.HasIndex("TipoDePagamentoId");
+                    b.HasIndex("TipoPagamentoId");
 
                     b.HasIndex("TransportadoraId");
 
@@ -151,14 +151,12 @@ namespace pagamentoProduto.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("MarcaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<double>("Preco")
@@ -185,11 +183,9 @@ namespace pagamentoProduto.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("InformacoesAdicionais")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("NomeDoCobrado")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -206,7 +202,6 @@ namespace pagamentoProduto.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -221,7 +216,6 @@ namespace pagamentoProduto.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -234,28 +228,12 @@ namespace pagamentoProduto.Migrations
                     b.HasBaseType("trabalho_final.Models.TipoPagamento");
 
                     b.Property<string>("Bandeira")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("NumeroDoCartao")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasDiscriminator().HasValue("PagamentoComCartao");
-                });
-
-            modelBuilder.Entity("trabalho_final.Models.PagamentoComCheque", b =>
-                {
-                    b.HasBaseType("trabalho_final.Models.TipoPagamento");
-
-                    b.Property<int>("Banco")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NomeDoBanco")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasDiscriminator().HasValue("PagamentoComCheque");
                 });
 
             modelBuilder.Entity("trabalho_final.Models.Item", b =>
@@ -281,9 +259,9 @@ namespace pagamentoProduto.Migrations
                         .WithMany()
                         .HasForeignKey("ClienteId");
 
-                    b.HasOne("trabalho_final.Models.TipoPagamento", "TipoDePagamento")
+                    b.HasOne("trabalho_final.Models.TipoPagamento", "TipoPagamento")
                         .WithMany()
-                        .HasForeignKey("TipoDePagamentoId");
+                        .HasForeignKey("TipoPagamentoId");
 
                     b.HasOne("trabalho_final.Models.Transportadora", "Transportadora")
                         .WithMany()
@@ -295,7 +273,7 @@ namespace pagamentoProduto.Migrations
 
                     b.Navigation("Cliente");
 
-                    b.Navigation("TipoDePagamento");
+                    b.Navigation("TipoPagamento");
 
                     b.Navigation("Transportadora");
 
@@ -313,13 +291,13 @@ namespace pagamentoProduto.Migrations
 
             modelBuilder.Entity("trabalho_final.Models.Produto", b =>
                 {
-                    b.HasOne("trabalho_final.Models.Marca", "Marca")
+                    b.HasOne("trabalho_final.Models.Marca", "MarcaProduto")
                         .WithMany("Produtos")
                         .HasForeignKey("MarcaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Marca");
+                    b.Navigation("MarcaProduto");
                 });
 
             modelBuilder.Entity("trabalho_final.Models.Marca", b =>

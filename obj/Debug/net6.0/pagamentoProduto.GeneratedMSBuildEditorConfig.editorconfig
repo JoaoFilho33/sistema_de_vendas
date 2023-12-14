@@ -104,6 +104,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTm90YXNEZVZlbmRhL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCartao/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2FydGFvL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCartao/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2FydGFvL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCartao/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2FydGFvL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCartao/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2FydGFvL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCartao/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2FydGFvL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCheque/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2hlcXVlL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCheque/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2hlcXVlL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCheque/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2hlcXVlL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCheque/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2hlcXVlL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/joao-filho/Documentos/pagamentoProduto/Views/PagamentoComCheque/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvQ29tQ2hlcXVlL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/joao-filho/Documentos/pagamentoProduto/Views/Pagamentos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFnYW1lbnRvcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

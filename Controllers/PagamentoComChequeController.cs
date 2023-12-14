@@ -10,22 +10,22 @@ using trabalho_final.Models;
 
 namespace pagamentoProduto.Controllers
 {
-    public class PagamentosComCartaoController : Controller
+    public class PagamentoComChequeController : Controller
     {
         private readonly MyDbContext _context;
 
-        public PagamentosComCartaoController(MyDbContext context)
+        public PagamentoComChequeController(MyDbContext context)
         {
             _context = context;
         }
 
-        // GET: PagamentosComCartao
+        // GET: PagamentoComCheque
         public async Task<IActionResult> Index()
         {
-            return View(await _context.PagamentoComCartao.ToListAsync());
+            return View(await _context.PagamentoComCheque.ToListAsync());
         }
 
-        // GET: PagamentosComCartao/Details/5
+        // GET: PagamentoComCheque/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace pagamentoProduto.Controllers
                 return NotFound();
             }
 
-            var pagamentoComCartao = await _context.PagamentoComCartao
+            var pagamentoComCheque = await _context.PagamentoComCheque
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pagamentoComCartao == null)
+            if (pagamentoComCheque == null)
             {
                 return NotFound();
             }
 
-            return View(pagamentoComCartao);
+            return View(pagamentoComCheque);
         }
 
-        // GET: PagamentosComCartao/Create
+        // GET: PagamentoComCheque/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: PagamentosComCartao/Create
+        // POST: PagamentoComCheque/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NumeroDoCartao,Bandeira,NomeDoCobrado,InformacoesAdicionais")] PagamentoComCartao pagamentoComCartao)
+        public async Task<IActionResult> Create([Bind("Banco,NomeDoBanco,Id,NomeDoCobrado,InformacoesAdicionais")] PagamentoComCheque pagamentoComCheque)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pagamentoComCartao);
+                _context.Add(pagamentoComCheque);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pagamentoComCartao);
+            return View(pagamentoComCheque);
         }
 
-        // GET: PagamentosComCartao/Edit/5
+        // GET: PagamentoComCheque/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace pagamentoProduto.Controllers
                 return NotFound();
             }
 
-            var pagamentoComCartao = await _context.PagamentoComCartao.FindAsync(id);
-            if (pagamentoComCartao == null)
+            var pagamentoComCheque = await _context.PagamentoComCheque.FindAsync(id);
+            if (pagamentoComCheque == null)
             {
                 return NotFound();
             }
-            return View(pagamentoComCartao);
+            return View(pagamentoComCheque);
         }
 
-        // POST: PagamentosComCartao/Edit/5
+        // POST: PagamentoComCheque/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NumeroDoCartao,Bandeira,NomeDoCobrado,InformacoesAdicionais")] PagamentoComCartao pagamentoComCartao)
+        public async Task<IActionResult> Edit(int id, [Bind("Banco,NomeDoBanco,Id,NomeDoCobrado,InformacoesAdicionais")] PagamentoComCheque pagamentoComCheque)
         {
-            if (id != pagamentoComCartao.Id)
+            if (id != pagamentoComCheque.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace pagamentoProduto.Controllers
             {
                 try
                 {
-                    _context.Update(pagamentoComCartao);
+                    _context.Update(pagamentoComCheque);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PagamentoComCartaoExists(pagamentoComCartao.Id))
+                    if (!PagamentoComChequeExists(pagamentoComCheque.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace pagamentoProduto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pagamentoComCartao);
+            return View(pagamentoComCheque);
         }
 
-        // GET: PagamentosComCartao/Delete/5
+        // GET: PagamentoComCheque/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace pagamentoProduto.Controllers
                 return NotFound();
             }
 
-            var pagamentoComCartao = await _context.PagamentoComCartao
+            var pagamentoComCheque = await _context.PagamentoComCheque
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pagamentoComCartao == null)
+            if (pagamentoComCheque == null)
             {
                 return NotFound();
             }
 
-            return View(pagamentoComCartao);
+            return View(pagamentoComCheque);
         }
 
-        // POST: PagamentosComCartao/Delete/5
+        // POST: PagamentoComCheque/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pagamentoComCartao = await _context.PagamentoComCartao.FindAsync(id);
-            _context.PagamentoComCartao.Remove(pagamentoComCartao);
+            var pagamentoComCheque = await _context.PagamentoComCheque.FindAsync(id);
+            _context.PagamentoComCheque.Remove(pagamentoComCheque);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PagamentoComCartaoExists(int id)
+        private bool PagamentoComChequeExists(int id)
         {
-            return _context.PagamentoComCartao.Any(e => e.Id == id);
+            return _context.PagamentoComCheque.Any(e => e.Id == id);
         }
     }
 }

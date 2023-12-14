@@ -1,3 +1,11 @@
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.csproj.AssemblyReference.cache
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.GeneratedMSBuildEditorConfig.editorconfig
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.AssemblyInfoInputs.cache
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.AssemblyInfo.cs
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.csproj.CoreCompileInputs.cache
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.MvcApplicationPartsAssemblyInfo.cache
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.RazorAssemblyInfo.cache
+/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.RazorAssemblyInfo.cs
 /home/joao-filho/Documentos/pagamentoProduto/bin/Debug/net6.0/appsettings.Development.json
 /home/joao-filho/Documentos/pagamentoProduto/bin/Debug/net6.0/appsettings.json
 /home/joao-filho/Documentos/pagamentoProduto/bin/Debug/net6.0/pagamentoProduto.staticwebassets.runtime.json
@@ -243,14 +251,6 @@
 /home/joao-filho/Documentos/pagamentoProduto/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /home/joao-filho/Documentos/pagamentoProduto/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /home/joao-filho/Documentos/pagamentoProduto/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.csproj.AssemblyReference.cache
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.GeneratedMSBuildEditorConfig.editorconfig
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.AssemblyInfoInputs.cache
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.AssemblyInfo.cs
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.csproj.CoreCompileInputs.cache
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.MvcApplicationPartsAssemblyInfo.cache
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.RazorAssemblyInfo.cache
-/home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/pagamentoProduto.RazorAssemblyInfo.cs
 /home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/staticwebassets/msbuild.pagamentoProduto.Microsoft.AspNetCore.StaticWebAssets.props
 /home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/staticwebassets/msbuild.build.pagamentoProduto.props
 /home/joao-filho/Documentos/pagamentoProduto/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.pagamentoProduto.props
