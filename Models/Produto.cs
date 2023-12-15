@@ -12,15 +12,15 @@ namespace trabalho_final.Models
         [Display(Name = "Codigo"), Key()]
         public int Id { get; set; }
         [Display(Name = "Nome")]
-        public int Quantidade { get; set; }
-        [Display(Name = "Preço")]
         public string Nome { get; set; } = string.Empty;
         [Display(Name = "Descrição")]
         public string Descricao { get; set; } = string.Empty;
         [Display(Name = "Quantidade")]
+        public int Quantidade { get; set; }
+        [Display(Name = "Preço")]
         public double Preco { get; set; }
         [Display(Name = "Marca")]
-        public Marca? Marca { get; set; } 
+        public Marca? Marca { get; set; }
         [Display(Name = "Marca"), Required(), ForeignKey("Marca")]
         public int MarcaId { get; set; }
         [Display(Name = "Itens")]

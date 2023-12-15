@@ -22,7 +22,8 @@ namespace pagamentoProduto.Controllers
         // GET: Itens
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Item.ToListAsync());
+            var myDbContext = _context.Item.Include(i => i.NotaDeVenda).Include(i => i.Produto);
+            return View(await myDbContext.ToListAsync());
         }
 
         // GET: Itens/Details/5
@@ -34,6 +35,8 @@ namespace pagamentoProduto.Controllers
             }
 
             var item = await _context.Item
+                .Include(i => i.NotaDeVenda)
+                .Include(i => i.Produto)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {
@@ -46,6 +49,8 @@ namespace pagamentoProduto.Controllers
         // GET: Itens/Create
         public IActionResult Create()
         {
+            ViewData["NotaDeVendaId"] = new SelectList(_context.NotaDeVenda, "Id", "Id");
+            ViewData["ProdutoId"] = new SelectList(_context.Produto, "Id", "Id");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace pagamentoProduto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Preco,Percentual,Quantidade")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,Preco,Percentual,Quantidade,ProdutoId,NotaDeVendaId")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace pagamentoProduto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["NotaDeVendaId"] = new SelectList(_context.NotaDeVenda, "Id", "Id", item.NotaDeVendaId);
+            ViewData["ProdutoId"] = new SelectList(_context.Produto, "Id", "Id", item.ProdutoId);
             return View(item);
         }
 
@@ -78,6 +85,8 @@ namespace pagamentoProduto.Controllers
             {
                 return NotFound();
             }
+            ViewData["NotaDeVendaId"] = new SelectList(_context.NotaDeVenda, "Id", "Id", item.NotaDeVendaId);
+            ViewData["ProdutoId"] = new SelectList(_context.Produto, "Id", "Id", item.ProdutoId);
             return View(item);
         }
 
@@ -86,7 +95,7 @@ namespace pagamentoProduto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Preco,Percentual,Quantidade")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Preco,Percentual,Quantidade,ProdutoId,NotaDeVendaId")] Item item)
         {
             if (id != item.Id)
             {
@@ -113,6 +122,8 @@ namespace pagamentoProduto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["NotaDeVendaId"] = new SelectList(_context.NotaDeVenda, "Id", "Id", item.NotaDeVendaId);
+            ViewData["ProdutoId"] = new SelectList(_context.Produto, "Id", "Id", item.ProdutoId);
             return View(item);
         }
 
@@ -125,6 +136,8 @@ namespace pagamentoProduto.Controllers
             }
 
             var item = await _context.Item
+                .Include(i => i.NotaDeVenda)
+                .Include(i => i.Produto)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {

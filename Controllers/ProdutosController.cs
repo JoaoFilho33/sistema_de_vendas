@@ -22,7 +22,8 @@ namespace pagamentoProduto.Controllers
         // GET: Produtos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produto.ToListAsync());
+            var myDbContext = _context.Produto.Include(p => p.Marca);
+            return View(await myDbContext.ToListAsync());
         }
 
         // GET: Produtos/Details/5
@@ -34,6 +35,7 @@ namespace pagamentoProduto.Controllers
             }
 
             var produto = await _context.Produto
+                .Include(p => p.Marca)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (produto == null)
             {
@@ -46,6 +48,7 @@ namespace pagamentoProduto.Controllers
         // GET: Produtos/Create
         public IActionResult Create()
         {
+            ViewData["MarcaId"] = new SelectList(_context.Marca, "Id", "Id");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace pagamentoProduto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,Quantidade,Preco")] Produto produto)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,Quantidade,Preco,MarcaId")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace pagamentoProduto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MarcaId"] = new SelectList(_context.Marca, "Id", "Id", produto.MarcaId);
             return View(produto);
         }
 
@@ -78,6 +82,7 @@ namespace pagamentoProduto.Controllers
             {
                 return NotFound();
             }
+            ViewData["MarcaId"] = new SelectList(_context.Marca, "Id", "Id", produto.MarcaId);
             return View(produto);
         }
 
@@ -86,7 +91,7 @@ namespace pagamentoProduto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao,Quantidade,Preco")] Produto produto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao,Quantidade,Preco,MarcaId")] Produto produto)
         {
             if (id != produto.Id)
             {
@@ -113,6 +118,7 @@ namespace pagamentoProduto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["MarcaId"] = new SelectList(_context.Marca, "Id", "Id", produto.MarcaId);
             return View(produto);
         }
 
@@ -125,6 +131,7 @@ namespace pagamentoProduto.Controllers
             }
 
             var produto = await _context.Produto
+                .Include(p => p.Marca)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (produto == null)
             {

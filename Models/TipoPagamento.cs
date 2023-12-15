@@ -10,9 +10,14 @@ namespace trabalho_final.Models
     {
         [Display(Name = "Codigo"), Key()]
         public int Id { get; set; }
+
         [Display(Name = "Nome do Cobrado")]
         public string NomeDoCobrado { get; set; } = string.Empty;
+
         [Display(Name = "Informações Adicionais")]
         public string InformacoesAdicionais { get; set; } = string.Empty;
+
+        public string Discriminator { get; set; } = nameof(TipoPagamento);
     }
+
 }

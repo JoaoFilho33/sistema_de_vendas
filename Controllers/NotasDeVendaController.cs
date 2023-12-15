@@ -22,7 +22,8 @@ namespace pagamentoProduto.Controllers
         // GET: NotasDeVenda
         public async Task<IActionResult> Index()
         {
-            return View(await _context.NotaDeVenda.ToListAsync());
+            var myDbContext = _context.NotaDeVenda.Include(n => n.Cliente).Include(n => n.TipoDePagamento).Include(n => n.Transportadora).Include(n => n.Vendedor);
+            return View(await myDbContext.ToListAsync());
         }
 
         // GET: NotasDeVenda/Details/5
@@ -34,6 +35,10 @@ namespace pagamentoProduto.Controllers
             }
 
             var notaDeVenda = await _context.NotaDeVenda
+                .Include(n => n.Cliente)
+                .Include(n => n.TipoDePagamento)
+                .Include(n => n.Transportadora)
+                .Include(n => n.Vendedor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (notaDeVenda == null)
             {
@@ -46,6 +51,10 @@ namespace pagamentoProduto.Controllers
         // GET: NotasDeVenda/Create
         public IActionResult Create()
         {
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
+            ViewData["TipoDePagamentoId"] = new SelectList(_context.TipoPagamento, "Id", "Discriminator");
+            ViewData["TransportadoraId"] = new SelectList(_context.Transportadora, "Id", "Id");
+            ViewData["VendedorId"] = new SelectList(_context.Vendedor, "Id", "Id");
             return View();
         }
 
@@ -54,7 +63,7 @@ namespace pagamentoProduto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Data,Tipo")] NotaDeVenda notaDeVenda)
+        public async Task<IActionResult> Create([Bind("Id,Data,Tipo,ClienteId,VendedorId,TransportadoraId,TipoDePagamentoId")] NotaDeVenda notaDeVenda)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +71,10 @@ namespace pagamentoProduto.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", notaDeVenda.ClienteId);
+            ViewData["TipoDePagamentoId"] = new SelectList(_context.TipoPagamento, "Id", "Discriminator", notaDeVenda.TipoDePagamentoId);
+            ViewData["TransportadoraId"] = new SelectList(_context.Transportadora, "Id", "Id", notaDeVenda.TransportadoraId);
+            ViewData["VendedorId"] = new SelectList(_context.Vendedor, "Id", "Id", notaDeVenda.VendedorId);
             return View(notaDeVenda);
         }
 
@@ -78,6 +91,10 @@ namespace pagamentoProduto.Controllers
             {
                 return NotFound();
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", notaDeVenda.ClienteId);
+            ViewData["TipoDePagamentoId"] = new SelectList(_context.TipoPagamento, "Id", "Discriminator", notaDeVenda.TipoDePagamentoId);
+            ViewData["TransportadoraId"] = new SelectList(_context.Transportadora, "Id", "Id", notaDeVenda.TransportadoraId);
+            ViewData["VendedorId"] = new SelectList(_context.Vendedor, "Id", "Id", notaDeVenda.VendedorId);
             return View(notaDeVenda);
         }
 
@@ -86,7 +103,7 @@ namespace pagamentoProduto.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Tipo")] NotaDeVenda notaDeVenda)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Data,Tipo,ClienteId,VendedorId,TransportadoraId,TipoDePagamentoId")] NotaDeVenda notaDeVenda)
         {
             if (id != notaDeVenda.Id)
             {
@@ -113,6 +130,10 @@ namespace pagamentoProduto.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", notaDeVenda.ClienteId);
+            ViewData["TipoDePagamentoId"] = new SelectList(_context.TipoPagamento, "Id", "Discriminator", notaDeVenda.TipoDePagamentoId);
+            ViewData["TransportadoraId"] = new SelectList(_context.Transportadora, "Id", "Id", notaDeVenda.TransportadoraId);
+            ViewData["VendedorId"] = new SelectList(_context.Vendedor, "Id", "Id", notaDeVenda.VendedorId);
             return View(notaDeVenda);
         }
 
@@ -125,6 +146,10 @@ namespace pagamentoProduto.Controllers
             }
 
             var notaDeVenda = await _context.NotaDeVenda
+                .Include(n => n.Cliente)
+                .Include(n => n.TipoDePagamento)
+                .Include(n => n.Transportadora)
+                .Include(n => n.Vendedor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (notaDeVenda == null)
             {

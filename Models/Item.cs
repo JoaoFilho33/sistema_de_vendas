@@ -19,6 +19,7 @@ namespace trabalho_final.Models
         public Produto? Produto { get; set; }
         [Display(Name = "Produto"), Required(), ForeignKey("Produto")]
         public int ProdutoId { get; set; }
+
         public NotaDeVenda? NotaDeVenda { get; set; } = null!;
         [Display(Name = "Nota de Venda"), ForeignKey("NotaDeVenda")]
         public int? NotaDeVendaId { get; set; } = null!;
